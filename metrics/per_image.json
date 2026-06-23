@@ -1,0 +1,370 @@
+{
+  "wispy_black_hair_white_blouse": {
+    "current_green": {
+      "fg_frac": 0.39173,
+      "largest_cc_ratio": 0.99893,
+      "soft_band_pct": 2.6148,
+      "green_spill": 1.1831,
+      "blue_spill": 0.3532,
+      "halo_dark": 16.6556,
+      "holes_pct": 3.6245,
+      "white_rim_pct": 0.4174,
+      "dark_rim_pct": 73.794
+    },
+    "white_outline_green": {
+      "fg_frac": 0.44115,
+      "largest_cc_ratio": 0.9422,
+      "soft_band_pct": 2.5391,
+      "green_spill": 0.3562,
+      "blue_spill": 0.023,
+      "halo_dark": 59.6095,
+      "holes_pct": 0.7702,
+      "white_rim_pct": 46.216,
+      "dark_rim_pct": 2.6412
+    },
+    "dark_contour_green": {
+      "fg_frac": 0.39708,
+      "largest_cc_ratio": 0.99931,
+      "soft_band_pct": 2.9291,
+      "green_spill": 1.4278,
+      "blue_spill": 0.0318,
+      "halo_dark": 11.4642,
+      "holes_pct": 0.6801,
+      "white_rim_pct": 0.0246,
+      "dark_rim_pct": 79.4195
+    },
+    "blue_screen": {
+      "fg_frac": 0.451,
+      "largest_cc_ratio": 0.99929,
+      "soft_band_pct": 2.6487,
+      "green_spill": 0.0203,
+      "blue_spill": 7.7825,
+      "halo_dark": 13.1841,
+      "holes_pct": 1.6712,
+      "white_rim_pct": 0.7235,
+      "dark_rim_pct": 63.8356
+    }
+  },
+  "blonde_curls_dark_coat": {
+    "current_green": {
+      "fg_frac": 0.49317,
+      "largest_cc_ratio": 0.99976,
+      "soft_band_pct": 2.0033,
+      "green_spill": 1.0006,
+      "blue_spill": 1.4966,
+      "halo_dark": 9.3324,
+      "holes_pct": 0.8248,
+      "white_rim_pct": 0.0237,
+      "dark_rim_pct": 79.0792
+    },
+    "white_outline_green": {
+      "fg_frac": 0.5604,
+      "largest_cc_ratio": 1.0,
+      "soft_band_pct": 1.725,
+      "green_spill": 0.3779,
+      "blue_spill": 0.0511,
+      "halo_dark": 52.4481,
+      "holes_pct": 0.608,
+      "white_rim_pct": 52.0012,
+      "dark_rim_pct": 3.2969
+    },
+    "dark_contour_green": {
+      "fg_frac": 0.47789,
+      "largest_cc_ratio": 0.99752,
+      "soft_band_pct": 3.067,
+      "green_spill": 1.2236,
+      "blue_spill": 0.6391,
+      "halo_dark": 13.9133,
+      "holes_pct": 1.4864,
+      "white_rim_pct": 0.0,
+      "dark_rim_pct": 60.675
+    },
+    "blue_screen": {
+      "fg_frac": 0.45069,
+      "largest_cc_ratio": 0.92976,
+      "soft_band_pct": 2.4344,
+      "green_spill": 0.0215,
+      "blue_spill": 0.107,
+      "halo_dark": 7.6553,
+      "holes_pct": 0.0,
+      "white_rim_pct": 0.0,
+      "dark_rim_pct": 81.2723
+    }
+  },
+  "silver_hair_translucent_sleeves": {
+    "current_green": {
+      "fg_frac": 0.51682,
+      "largest_cc_ratio": 0.99994,
+      "soft_band_pct": 1.6789,
+      "green_spill": 0.4292,
+      "blue_spill": 4.5657,
+      "halo_dark": 33.7453,
+      "holes_pct": 0.2851,
+      "white_rim_pct": 3.0066,
+      "dark_rim_pct": 17.6295
+    },
+    "white_outline_green": {
+      "fg_frac": 0.50805,
+      "largest_cc_ratio": 1.0,
+      "soft_band_pct": 1.3068,
+      "green_spill": 0.3994,
+      "blue_spill": 0.0401,
+      "halo_dark": 54.4045,
+      "holes_pct": 0.2057,
+      "white_rim_pct": 50.7764,
+      "dark_rim_pct": 2.3879
+    },
+    "dark_contour_green": {
+      "fg_frac": 0.46452,
+      "largest_cc_ratio": 0.99977,
+      "soft_band_pct": 2.0784,
+      "green_spill": 1.2639,
+      "blue_spill": 2.4982,
+      "halo_dark": 20.7946,
+      "holes_pct": 2.4457,
+      "white_rim_pct": 0.1702,
+      "dark_rim_pct": 49.7247
+    },
+    "blue_screen": {
+      "fg_frac": 0.4123,
+      "largest_cc_ratio": 0.99983,
+      "soft_band_pct": 1.7564,
+      "green_spill": 0.0122,
+      "blue_spill": 0.9277,
+      "halo_dark": 34.8412,
+      "holes_pct": 2.2104,
+      "white_rim_pct": 0.5231,
+      "dark_rim_pct": 14.5152
+    }
+  },
+  "blue_jacket_prop_edges": {
+    "current_green": {
+      "fg_frac": 0.44022,
+      "largest_cc_ratio": 0.99957,
+      "soft_band_pct": 2.5118,
+      "green_spill": 2.0891,
+      "blue_spill": 2.0083,
+      "halo_dark": 5.7558,
+      "holes_pct": 16.594,
+      "white_rim_pct": 0.1798,
+      "dark_rim_pct": 87.4202
+    },
+    "white_outline_green": {
+      "fg_frac": 0.43811,
+      "largest_cc_ratio": 0.99994,
+      "soft_band_pct": 2.4422,
+      "green_spill": 0.338,
+      "blue_spill": 0.2015,
+      "halo_dark": 44.0061,
+      "holes_pct": 17.2314,
+      "white_rim_pct": 43.2447,
+      "dark_rim_pct": 14.9838
+    },
+    "dark_contour_green": {
+      "fg_frac": 0.41261,
+      "largest_cc_ratio": 1.0,
+      "soft_band_pct": 2.3986,
+      "green_spill": 2.2679,
+      "blue_spill": 0.4879,
+      "halo_dark": 2.309,
+      "holes_pct": 20.8801,
+      "white_rim_pct": 0.0,
+      "dark_rim_pct": 95.3185
+    },
+    "blue_screen": {
+      "fg_frac": 0.37887,
+      "largest_cc_ratio": 0.9064,
+      "soft_band_pct": 1.7418,
+      "green_spill": 0.0367,
+      "blue_spill": 1.0377,
+      "halo_dark": 5.3588,
+      "holes_pct": 0.1636,
+      "white_rim_pct": 0.2873,
+      "dark_rim_pct": 86.1756
+    }
+  },
+  "red_gown_long_hair": {
+    "current_green": {
+      "fg_frac": 0.40151,
+      "largest_cc_ratio": 0.9994,
+      "soft_band_pct": 1.8796,
+      "green_spill": 0.5399,
+      "blue_spill": 0.0,
+      "halo_dark": 9.5788,
+      "holes_pct": 8.7669,
+      "white_rim_pct": 0.0,
+      "dark_rim_pct": 59.698
+    },
+    "white_outline_green": {
+      "fg_frac": 0.47188,
+      "largest_cc_ratio": 1.0,
+      "soft_band_pct": 1.8353,
+      "green_spill": 0.2549,
+      "blue_spill": 0.0437,
+      "halo_dark": 57.5894,
+      "holes_pct": 2.4584,
+      "white_rim_pct": 48.1166,
+      "dark_rim_pct": 2.6472
+    },
+    "dark_contour_green": {
+      "fg_frac": 0.45556,
+      "largest_cc_ratio": 0.99999,
+      "soft_band_pct": 2.132,
+      "green_spill": 0.686,
+      "blue_spill": 0.0,
+      "halo_dark": 9.5946,
+      "holes_pct": 9.7896,
+      "white_rim_pct": 0.0,
+      "dark_rim_pct": 68.0844
+    },
+    "blue_screen": {
+      "fg_frac": 0.37657,
+      "largest_cc_ratio": 0.99999,
+      "soft_band_pct": 2.2873,
+      "green_spill": 0.0,
+      "blue_spill": 4.1895,
+      "halo_dark": 17.3628,
+      "holes_pct": 2.0252,
+      "white_rim_pct": 0.0,
+      "dark_rim_pct": 38.4098
+    }
+  },
+  "spiky_hair_black_outfit": {
+    "current_green": {
+      "fg_frac": 0.47992,
+      "largest_cc_ratio": 0.99998,
+      "soft_band_pct": 2.1315,
+      "green_spill": 1.184,
+      "blue_spill": 0.4111,
+      "halo_dark": 2.325,
+      "holes_pct": 0.4397,
+      "white_rim_pct": 0.0,
+      "dark_rim_pct": 98.2413
+    },
+    "white_outline_green": {
+      "fg_frac": 0.44372,
+      "largest_cc_ratio": 1.0,
+      "soft_band_pct": 1.787,
+      "green_spill": 0.3448,
+      "blue_spill": 0.0568,
+      "halo_dark": 55.3456,
+      "holes_pct": 0.1664,
+      "white_rim_pct": 53.8631,
+      "dark_rim_pct": 3.3002
+    },
+    "dark_contour_green": {
+      "fg_frac": 0.46146,
+      "largest_cc_ratio": 0.99997,
+      "soft_band_pct": 2.0298,
+      "green_spill": 1.3057,
+      "blue_spill": 0.1416,
+      "halo_dark": 2.4441,
+      "holes_pct": 0.3541,
+      "white_rim_pct": 0.0,
+      "dark_rim_pct": 98.1241
+    },
+    "blue_screen": {
+      "fg_frac": 0.45584,
+      "largest_cc_ratio": 0.99999,
+      "soft_band_pct": 1.9311,
+      "green_spill": 0.055,
+      "blue_spill": 7.1982,
+      "halo_dark": 3.9351,
+      "holes_pct": 0.122,
+      "white_rim_pct": 0.0,
+      "dark_rim_pct": 85.9207
+    }
+  },
+  "pastel_twin_tails_thin_ribbons": {
+    "current_green": {
+      "fg_frac": 0.3628,
+      "largest_cc_ratio": 0.99934,
+      "soft_band_pct": 2.7073,
+      "green_spill": 0.2307,
+      "blue_spill": 0.0,
+      "halo_dark": 38.9497,
+      "holes_pct": 14.3258,
+      "white_rim_pct": 0.4076,
+      "dark_rim_pct": 10.7752
+    },
+    "white_outline_green": {
+      "fg_frac": 0.40412,
+      "largest_cc_ratio": 1.0,
+      "soft_band_pct": 2.1947,
+      "green_spill": 0.5831,
+      "blue_spill": 0.0119,
+      "halo_dark": 58.6639,
+      "holes_pct": 5.0262,
+      "white_rim_pct": 65.8195,
+      "dark_rim_pct": 2.298
+    },
+    "dark_contour_green": {
+      "fg_frac": 0.3524,
+      "largest_cc_ratio": 0.99953,
+      "soft_band_pct": 2.635,
+      "green_spill": 0.6521,
+      "blue_spill": 0.0021,
+      "halo_dark": 28.4205,
+      "holes_pct": 8.7573,
+      "white_rim_pct": 0.2749,
+      "dark_rim_pct": 35.0295
+    },
+    "blue_screen": {
+      "fg_frac": 0.37422,
+      "largest_cc_ratio": 0.99985,
+      "soft_band_pct": 2.0361,
+      "green_spill": 0.0017,
+      "blue_spill": 103.2972,
+      "halo_dark": 13.3395,
+      "holes_pct": 9.284,
+      "white_rim_pct": 0.0091,
+      "dark_rim_pct": 9.8831
+    }
+  },
+  "white_suit_dark_outline": {
+    "current_green": {
+      "fg_frac": 0.37031,
+      "largest_cc_ratio": 0.9563,
+      "soft_band_pct": 1.6805,
+      "green_spill": 0.6011,
+      "blue_spill": 0.4245,
+      "halo_dark": 34.4214,
+      "holes_pct": 1.3449,
+      "white_rim_pct": 23.2228,
+      "dark_rim_pct": 34.1827
+    },
+    "white_outline_green": {
+      "fg_frac": 0.4155,
+      "largest_cc_ratio": 0.92748,
+      "soft_band_pct": 2.2628,
+      "green_spill": 0.3212,
+      "blue_spill": 0.027,
+      "halo_dark": 62.3791,
+      "holes_pct": 0.0,
+      "white_rim_pct": 56.3257,
+      "dark_rim_pct": 1.9137
+    },
+    "dark_contour_green": {
+      "fg_frac": 0.40567,
+      "largest_cc_ratio": 0.96102,
+      "soft_band_pct": 1.9802,
+      "green_spill": 2.5674,
+      "blue_spill": 0.1533,
+      "halo_dark": 14.5774,
+      "holes_pct": 0.9507,
+      "white_rim_pct": 6.6194,
+      "dark_rim_pct": 70.4958
+    },
+    "blue_screen": {
+      "fg_frac": 0.43528,
+      "largest_cc_ratio": 0.99999,
+      "soft_band_pct": 1.5702,
+      "green_spill": 0.0272,
+      "blue_spill": 13.4981,
+      "halo_dark": 18.4899,
+      "holes_pct": 1.0178,
+      "white_rim_pct": 2.4508,
+      "dark_rim_pct": 45.5589
+    }
+  }
+}

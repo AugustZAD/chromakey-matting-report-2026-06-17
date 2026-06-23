@@ -1,0 +1,14 @@
+{
+  "sample_id": "wispy_black_hair_white_blouse",
+  "scheme_id": "blue_screen",
+  "scheme_label": "Blue Screen",
+  "key": "blue",
+  "raw_path": "/Users/august/chromakey-matting-exp-2026-06-17/raw/blue_screen/wispy_black_hair_white_blouse.png",
+  "prompt": "Stylized animated-series full-body character asset, 9:16 vertical composition, entire figure visible head to toe, centered with generous empty margin.\nClean cartoon/anime-inspired rendering, readable silhouette, designed facial features, simplified anatomy, clean linework, flat-to-cel shaded color, no photorealism, no 3D render, no text, no watermark.\nThe character must be fully opaque. Avoid transparent clothing, transparent hair, motion blur, glow, cast shadows, and background objects.\n\nCharacter description:\nfull-body young animated woman with wispy long black hair, flyaway strands, white blouse, charcoal pleated skirt, black loafers, slim arms and fingers.\n\n[BACKGROUND CONTRACT - chromakey blue]\n1. Background: pure chromakey blue (#0000FF), flat and edge-to-edge, no shading or gradient.\n2. Character body must contain ZERO blue-screen pixels anywhere on skin, hair, eyes, clothing, accessories, or props. If the outfit mentions saturated blue, shift it to deep navy, charcoal, burgundy, black, or another non-key tone.\n3. Lighting must be neutral or warm: no blue ambient bounce, no blue shadow tint, no blue cast on skin or hair highlights.\n4. Do not cast a shadow on the background; do not add a glow halo; the blue plate must remain perfectly flat.",
+  "result_public": {
+    "ok": true,
+    "url": "https://moonshort-resource.oss-us-west-1.aliyuncs.com/public/image/gpt-image2-1781704057873-thawmo.png",
+    "model": "image-gpt",
+    "elapsed_sec": 63.16
+  }
+}

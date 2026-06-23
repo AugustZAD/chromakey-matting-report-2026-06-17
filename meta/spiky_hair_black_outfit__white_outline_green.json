@@ -1,0 +1,14 @@
+{
+  "sample_id": "spiky_hair_black_outfit",
+  "scheme_id": "white_outline_green",
+  "scheme_label": "White Outline Green",
+  "key": "green",
+  "raw_path": "/Users/august/chromakey-matting-exp-2026-06-17/raw/white_outline_green/spiky_hair_black_outfit.png",
+  "prompt": "Stylized animated-series full-body character asset, 9:16 vertical composition, entire figure visible head to toe, centered with generous empty margin.\nClean cartoon/anime-inspired rendering, readable silhouette, designed facial features, simplified anatomy, clean linework, flat-to-cel shaded color, no photorealism, no 3D render, no text, no watermark.\nThe character must be fully opaque. Avoid transparent clothing, transparent hair, motion blur, glow, cast shadows, and background objects.\n\nCharacter description:\nfull-body animated man with spiky dark hair, black streetwear outfit, dangling silver chain accessories, sharp jacket edges, angular pose.\n\n[BACKGROUND CONTRACT - chromakey green with white separation outline]\n1. Background: pure chromakey green (#00FF00), flat and edge-to-edge, no shading or gradient.\n2. Character body must contain ZERO green pixels anywhere on skin, hair, eyes, clothing, accessories, or props. If the outfit mentions green, override it to a non-green tone.\n3. Lighting must be neutral or warm: no green ambient bounce, no green shadow tint, no green cast on skin or hair highlights.\n4. Character edge: add a thin 1-2 px clean PURE WHITE outline around the entire outer silhouette, not greenish-white, to separate the character from the chromakey plate.\n5. Do not cast a shadow on the background; do not add a glow halo; the green plate must remain perfectly flat.",
+  "result_public": {
+    "ok": true,
+    "url": "https://moonshort-resource.oss-us-west-1.aliyuncs.com/public/image/gpt-image2-1781705383892-o99jtn.png",
+    "model": "image-gpt",
+    "elapsed_sec": 74.84
+  }
+}

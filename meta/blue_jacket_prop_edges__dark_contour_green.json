@@ -1,0 +1,14 @@
+{
+  "sample_id": "blue_jacket_prop_edges",
+  "scheme_id": "dark_contour_green",
+  "scheme_label": "Dark Contour Green",
+  "key": "green",
+  "raw_path": "/Users/august/chromakey-matting-exp-2026-06-17/raw/dark_contour_green/blue_jacket_prop_edges.png",
+  "prompt": "Stylized animated-series full-body character asset, 9:16 vertical composition, entire figure visible head to toe, centered with generous empty margin.\nClean cartoon/anime-inspired rendering, readable silhouette, designed facial features, simplified anatomy, clean linework, flat-to-cel shaded color, no photorealism, no 3D render, no text, no watermark.\nThe character must be fully opaque. Avoid transparent clothing, transparent hair, motion blur, glow, cast shadows, and background objects.\n\nCharacter description:\nfull-body animated teenage boy wearing a saturated royal-blue jacket, black pants, white sneakers, holding a thin microphone stand beside him.\n\n[BACKGROUND CONTRACT - chromakey green with style-native contour]\n1. Background: pure chromakey green (#00FF00), flat and edge-to-edge, no shading or gradient.\n2. Character body must contain ZERO green pixels anywhere on skin, hair, eyes, clothing, accessories, or props. If the outfit mentions green, override it to a non-green tone.\n3. Lighting must be neutral or warm: no green ambient bounce, no green shadow tint, no green cast on skin or hair highlights.\n4. Character edge: use a clean dark ink outer contour that belongs to the character art style. No white outline, no pale sticker border, no glow halo.\n5. Do not cast a shadow on the background; the green plate must remain perfectly flat.",
+  "result_public": {
+    "ok": true,
+    "url": "https://moonshort-resource.oss-us-west-1.aliyuncs.com/public/image/gpt-image2-1781704857655-12k88p.png",
+    "model": "image-gpt",
+    "elapsed_sec": 74.08
+  }
+}

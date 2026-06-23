@@ -1,0 +1,158 @@
+{
+  "current_green": {
+    "fg_frac": {
+      "mean": 0.4321,
+      "median": 0.4209
+    },
+    "largest_cc_ratio": {
+      "mean": 0.9942,
+      "median": 0.9995
+    },
+    "soft_band_pct": {
+      "mean": 2.151,
+      "median": 2.0674
+    },
+    "green_spill": {
+      "mean": 0.9072,
+      "median": 0.8008
+    },
+    "blue_spill": {
+      "mean": 1.1574,
+      "median": 0.4178
+    },
+    "halo_dark": {
+      "mean": 18.8455,
+      "median": 13.1172
+    },
+    "holes_pct": {
+      "mean": 5.7757,
+      "median": 2.4847
+    },
+    "white_rim_pct": {
+      "mean": 3.4072,
+      "median": 0.2937
+    },
+    "dark_rim_pct": {
+      "mean": 57.6025,
+      "median": 66.746
+    },
+    "n": 8
+  },
+  "white_outline_green": {
+    "fg_frac": {
+      "mean": 0.4604,
+      "median": 0.4424
+    },
+    "largest_cc_ratio": {
+      "mean": 0.9837,
+      "median": 1.0
+    },
+    "soft_band_pct": {
+      "mean": 2.0116,
+      "median": 2.015
+    },
+    "green_spill": {
+      "mean": 0.3719,
+      "median": 0.3505
+    },
+    "blue_spill": {
+      "mean": 0.0569,
+      "median": 0.0419
+    },
+    "halo_dark": {
+      "mean": 55.5558,
+      "median": 56.4675
+    },
+    "holes_pct": {
+      "mean": 3.3083,
+      "median": 0.6891
+    },
+    "white_rim_pct": {
+      "mean": 52.0454,
+      "median": 51.3888
+    },
+    "dark_rim_pct": {
+      "mean": 4.1836,
+      "median": 2.6442
+    },
+    "n": 8
+  },
+  "dark_contour_green": {
+    "fg_frac": {
+      "mean": 0.4284,
+      "median": 0.4341
+    },
+    "largest_cc_ratio": {
+      "mean": 0.9946,
+      "median": 0.9997
+    },
+    "soft_band_pct": {
+      "mean": 2.4063,
+      "median": 2.2653
+    },
+    "green_spill": {
+      "mean": 1.4243,
+      "median": 1.2848
+    },
+    "blue_spill": {
+      "mean": 0.4943,
+      "median": 0.1474
+    },
+    "halo_dark": {
+      "mean": 12.9397,
+      "median": 12.6887
+    },
+    "holes_pct": {
+      "mean": 5.668,
+      "median": 1.9661
+    },
+    "white_rim_pct": {
+      "mean": 0.8861,
+      "median": 0.0123
+    },
+    "dark_rim_pct": {
+      "mean": 69.6089,
+      "median": 69.2901
+    },
+    "n": 8
+  },
+  "blue_screen": {
+    "fg_frac": {
+      "mean": 0.4168,
+      "median": 0.4238
+    },
+    "largest_cc_ratio": {
+      "mean": 0.9794,
+      "median": 0.9998
+    },
+    "soft_band_pct": {
+      "mean": 2.0507,
+      "median": 1.9836
+    },
+    "green_spill": {
+      "mean": 0.0218,
+      "median": 0.0209
+    },
+    "blue_spill": {
+      "mean": 17.2547,
+      "median": 5.6938
+    },
+    "halo_dark": {
+      "mean": 14.2708,
+      "median": 13.2618
+    },
+    "holes_pct": {
+      "mean": 2.0618,
+      "median": 1.3445
+    },
+    "white_rim_pct": {
+      "mean": 0.4992,
+      "median": 0.1482
+    },
+    "dark_rim_pct": {
+      "mean": 53.1964,
+      "median": 54.6972
+    },
+    "n": 8
+  }
+}

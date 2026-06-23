@@ -1,0 +1,162 @@
+[
+  {
+    "sample_id": "wispy_black_hair_white_blouse",
+    "scheme_id": "current_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "wispy_black_hair_white_blouse",
+    "scheme_id": "white_outline_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "wispy_black_hair_white_blouse",
+    "scheme_id": "dark_contour_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "wispy_black_hair_white_blouse",
+    "scheme_id": "blue_screen",
+    "postprocess": "MODNet_blue_v1"
+  },
+  {
+    "sample_id": "blonde_curls_dark_coat",
+    "scheme_id": "current_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "blonde_curls_dark_coat",
+    "scheme_id": "white_outline_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "blonde_curls_dark_coat",
+    "scheme_id": "dark_contour_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "blonde_curls_dark_coat",
+    "scheme_id": "blue_screen",
+    "postprocess": "MODNet_blue_v1"
+  },
+  {
+    "sample_id": "silver_hair_translucent_sleeves",
+    "scheme_id": "current_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "silver_hair_translucent_sleeves",
+    "scheme_id": "white_outline_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "silver_hair_translucent_sleeves",
+    "scheme_id": "dark_contour_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "silver_hair_translucent_sleeves",
+    "scheme_id": "blue_screen",
+    "postprocess": "MODNet_blue_v1"
+  },
+  {
+    "sample_id": "blue_jacket_prop_edges",
+    "scheme_id": "current_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "blue_jacket_prop_edges",
+    "scheme_id": "white_outline_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "blue_jacket_prop_edges",
+    "scheme_id": "dark_contour_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "blue_jacket_prop_edges",
+    "scheme_id": "blue_screen",
+    "postprocess": "MODNet_blue_v1"
+  },
+  {
+    "sample_id": "red_gown_long_hair",
+    "scheme_id": "current_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "red_gown_long_hair",
+    "scheme_id": "white_outline_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "red_gown_long_hair",
+    "scheme_id": "dark_contour_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "red_gown_long_hair",
+    "scheme_id": "blue_screen",
+    "postprocess": "MODNet_blue_v1"
+  },
+  {
+    "sample_id": "spiky_hair_black_outfit",
+    "scheme_id": "current_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "spiky_hair_black_outfit",
+    "scheme_id": "white_outline_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "spiky_hair_black_outfit",
+    "scheme_id": "dark_contour_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "spiky_hair_black_outfit",
+    "scheme_id": "blue_screen",
+    "postprocess": "MODNet_blue_v1"
+  },
+  {
+    "sample_id": "pastel_twin_tails_thin_ribbons",
+    "scheme_id": "current_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "pastel_twin_tails_thin_ribbons",
+    "scheme_id": "white_outline_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "pastel_twin_tails_thin_ribbons",
+    "scheme_id": "dark_contour_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "pastel_twin_tails_thin_ribbons",
+    "scheme_id": "blue_screen",
+    "postprocess": "MODNet_blue_v1"
+  },
+  {
+    "sample_id": "white_suit_dark_outline",
+    "scheme_id": "current_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "white_suit_dark_outline",
+    "scheme_id": "white_outline_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "white_suit_dark_outline",
+    "scheme_id": "dark_contour_green",
+    "postprocess": "MODNet_v10_green"
+  },
+  {
+    "sample_id": "white_suit_dark_outline",
+    "scheme_id": "blue_screen",
+    "postprocess": "MODNet_blue_v1"
+  }
+]
