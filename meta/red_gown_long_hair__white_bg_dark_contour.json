@@ -1,0 +1,9 @@
+{
+  "sample_id": "red_gown_long_hair",
+  "scheme_id": "white_bg_dark_contour",
+  "scheme_label": "White BG + Dark Contour",
+  "key": "model-only",
+  "raw_path": "/Users/august/chromakey-matting-exp-2026-06-17/raw/white_bg_dark_contour/red_gown_long_hair.png",
+  "prompt": "Stylized animated-series full-body character asset, 9:16 vertical composition, entire figure visible head to toe, centered with generous empty margin.\nClean cartoon/anime-inspired rendering, readable silhouette, designed facial features, simplified anatomy, clean linework, flat-to-cel shaded color, no photorealism, no 3D render, no text, no watermark.\nThe character must be fully opaque. Avoid transparent clothing, transparent hair, motion blur, glow, cast shadows, and background objects.\n\nCharacter description:\nfull-body animated woman in a deep red evening gown, long auburn hair crossing the shoulders, narrow waist, visible hands, clean elegant silhouette.\n\n[BACKGROUND CONTRACT - white background with dark silhouette contour]\n1. Background: pure white (#FFFFFF), flat and edge-to-edge, no shading, gradient, texture, or scenery.\n2. Character edge: use a clean dark ink outer contour around the entire silhouette. The contour should look like normal cartoon lineart, not a glow, not a sticker border.\n3. Do NOT recolor black or white clothing; black clothing, white clothing, hair, eyes, accessories, and props must remain visually faithful to the character description.\n4. No cast shadow on the white background; no rim glow; no background objects.",
+  "matting": "MODNet_raw_alpha_generic_cleanup_no_chroma_key"
+}

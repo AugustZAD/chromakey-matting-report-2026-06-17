@@ -43,6 +43,28 @@
       "holes_pct": 1.6712,
       "white_rim_pct": 0.7235,
       "dark_rim_pct": 63.8356
+    },
+    "white_bg_dark_contour": {
+      "fg_frac": 0.43321,
+      "largest_cc_ratio": 0.99878,
+      "soft_band_pct": 4.9684,
+      "green_spill": 0.1767,
+      "blue_spill": 0.9001,
+      "halo_dark": 43.4304,
+      "holes_pct": 2.6631,
+      "white_rim_pct": 40.8245,
+      "dark_rim_pct": 15.1794
+    },
+    "black_bg_light_contour": {
+      "fg_frac": 0.40039,
+      "largest_cc_ratio": 0.99606,
+      "soft_band_pct": 3.9391,
+      "green_spill": 0.1293,
+      "blue_spill": 0.2233,
+      "halo_dark": 31.5465,
+      "holes_pct": 2.2929,
+      "white_rim_pct": 4.5247,
+      "dark_rim_pct": 52.3297
     }
   },
   "blonde_curls_dark_coat": {
@@ -89,6 +111,28 @@
       "holes_pct": 0.0,
       "white_rim_pct": 0.0,
       "dark_rim_pct": 81.2723
+    },
+    "white_bg_dark_contour": {
+      "fg_frac": 0.5428,
+      "largest_cc_ratio": 1.0,
+      "soft_band_pct": 2.2809,
+      "green_spill": 0.1649,
+      "blue_spill": 0.3546,
+      "halo_dark": 36.4166,
+      "holes_pct": 0.7628,
+      "white_rim_pct": 37.0007,
+      "dark_rim_pct": 17.612
+    },
+    "black_bg_light_contour": {
+      "fg_frac": 0.53019,
+      "largest_cc_ratio": 1.0,
+      "soft_band_pct": 1.6767,
+      "green_spill": 0.1252,
+      "blue_spill": 0.1831,
+      "halo_dark": 25.1735,
+      "holes_pct": 0.3614,
+      "white_rim_pct": 7.22,
+      "dark_rim_pct": 49.8744
     }
   },
   "silver_hair_translucent_sleeves": {
@@ -135,6 +179,28 @@
       "holes_pct": 2.2104,
       "white_rim_pct": 0.5231,
       "dark_rim_pct": 14.5152
+    },
+    "white_bg_dark_contour": {
+      "fg_frac": 0.45237,
+      "largest_cc_ratio": 1.0,
+      "soft_band_pct": 1.5741,
+      "green_spill": 0.1967,
+      "blue_spill": 1.1687,
+      "halo_dark": 39.3023,
+      "holes_pct": 0.1969,
+      "white_rim_pct": 34.5912,
+      "dark_rim_pct": 9.1912
+    },
+    "black_bg_light_contour": {
+      "fg_frac": 0.52139,
+      "largest_cc_ratio": 1.0,
+      "soft_band_pct": 1.7815,
+      "green_spill": 0.1493,
+      "blue_spill": 0.1179,
+      "halo_dark": 32.4535,
+      "holes_pct": 0.5525,
+      "white_rim_pct": 13.0008,
+      "dark_rim_pct": 42.9853
     }
   },
   "blue_jacket_prop_edges": {
@@ -181,6 +247,28 @@
       "holes_pct": 0.1636,
       "white_rim_pct": 0.2873,
       "dark_rim_pct": 86.1756
+    },
+    "white_bg_dark_contour": {
+      "fg_frac": 0.39867,
+      "largest_cc_ratio": 1.0,
+      "soft_band_pct": 2.6275,
+      "green_spill": 0.2007,
+      "blue_spill": 0.4119,
+      "halo_dark": 35.6522,
+      "holes_pct": 0.6691,
+      "white_rim_pct": 34.1105,
+      "dark_rim_pct": 21.8489
+    },
+    "black_bg_light_contour": {
+      "fg_frac": 0.4394,
+      "largest_cc_ratio": 0.99782,
+      "soft_band_pct": 3.1792,
+      "green_spill": 0.1107,
+      "blue_spill": 0.2746,
+      "halo_dark": 28.5218,
+      "holes_pct": 3.7029,
+      "white_rim_pct": 8.5667,
+      "dark_rim_pct": 60.6077
     }
   },
   "red_gown_long_hair": {
@@ -227,6 +315,28 @@
       "holes_pct": 2.0252,
       "white_rim_pct": 0.0,
       "dark_rim_pct": 38.4098
+    },
+    "white_bg_dark_contour": {
+      "fg_frac": 0.4946,
+      "largest_cc_ratio": 1.0,
+      "soft_band_pct": 1.9473,
+      "green_spill": 0.2016,
+      "blue_spill": 0.1763,
+      "halo_dark": 31.1449,
+      "holes_pct": 2.8378,
+      "white_rim_pct": 29.356,
+      "dark_rim_pct": 24.3443
+    },
+    "black_bg_light_contour": {
+      "fg_frac": 0.47748,
+      "largest_cc_ratio": 1.0,
+      "soft_band_pct": 2.2066,
+      "green_spill": 0.1283,
+      "blue_spill": 0.1297,
+      "halo_dark": 39.021,
+      "holes_pct": 0.6122,
+      "white_rim_pct": 14.9193,
+      "dark_rim_pct": 40.2744
     }
   },
   "spiky_hair_black_outfit": {
@@ -273,6 +383,28 @@
       "holes_pct": 0.122,
       "white_rim_pct": 0.0,
       "dark_rim_pct": 85.9207
+    },
+    "white_bg_dark_contour": {
+      "fg_frac": 0.48222,
+      "largest_cc_ratio": 0.99998,
+      "soft_band_pct": 2.755,
+      "green_spill": 0.135,
+      "blue_spill": 0.239,
+      "halo_dark": 42.3765,
+      "holes_pct": 0.0766,
+      "white_rim_pct": 37.0925,
+      "dark_rim_pct": 16.0563
+    },
+    "black_bg_light_contour": {
+      "fg_frac": 0.56039,
+      "largest_cc_ratio": 1.0,
+      "soft_band_pct": 2.5808,
+      "green_spill": 0.0916,
+      "blue_spill": 0.2035,
+      "halo_dark": 20.9467,
+      "holes_pct": 0.3378,
+      "white_rim_pct": 3.8253,
+      "dark_rim_pct": 67.2224
     }
   },
   "pastel_twin_tails_thin_ribbons": {
@@ -319,6 +451,28 @@
       "holes_pct": 9.284,
       "white_rim_pct": 0.0091,
       "dark_rim_pct": 9.8831
+    },
+    "white_bg_dark_contour": {
+      "fg_frac": 0.48675,
+      "largest_cc_ratio": 0.97364,
+      "soft_band_pct": 3.5979,
+      "green_spill": 0.0808,
+      "blue_spill": 0.0718,
+      "halo_dark": 80.3791,
+      "holes_pct": 2.132,
+      "white_rim_pct": 75.1826,
+      "dark_rim_pct": 2.6322
+    },
+    "black_bg_light_contour": {
+      "fg_frac": 0.39538,
+      "largest_cc_ratio": 1.0,
+      "soft_band_pct": 2.3518,
+      "green_spill": 0.1581,
+      "blue_spill": 0.1646,
+      "halo_dark": 34.8,
+      "holes_pct": 1.2146,
+      "white_rim_pct": 14.1362,
+      "dark_rim_pct": 44.4786
     }
   },
   "white_suit_dark_outline": {
@@ -365,6 +519,28 @@
       "holes_pct": 1.0178,
       "white_rim_pct": 2.4508,
       "dark_rim_pct": 45.5589
+    },
+    "white_bg_dark_contour": {
+      "fg_frac": 0.3584,
+      "largest_cc_ratio": 0.8162,
+      "soft_band_pct": 6.2617,
+      "green_spill": 0.0646,
+      "blue_spill": 0.4284,
+      "halo_dark": 91.2419,
+      "holes_pct": 3.1747,
+      "white_rim_pct": 69.851,
+      "dark_rim_pct": 5.9735
+    },
+    "black_bg_light_contour": {
+      "fg_frac": 0.48915,
+      "largest_cc_ratio": 1.0,
+      "soft_band_pct": 2.8387,
+      "green_spill": 0.0805,
+      "blue_spill": 0.1656,
+      "halo_dark": 36.2859,
+      "holes_pct": 0.0,
+      "white_rim_pct": 31.3148,
+      "dark_rim_pct": 40.1854
     }
   }
 }

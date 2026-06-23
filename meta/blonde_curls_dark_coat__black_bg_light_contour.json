@@ -1,0 +1,9 @@
+{
+  "sample_id": "blonde_curls_dark_coat",
+  "scheme_id": "black_bg_light_contour",
+  "scheme_label": "Black BG + Light Contour",
+  "key": "model-only",
+  "raw_path": "/Users/august/chromakey-matting-exp-2026-06-17/raw/black_bg_light_contour/blonde_curls_dark_coat.png",
+  "prompt": "Stylized animated-series full-body character asset, 9:16 vertical composition, entire figure visible head to toe, centered with generous empty margin.\nClean cartoon/anime-inspired rendering, readable silhouette, designed facial features, simplified anatomy, clean linework, flat-to-cel shaded color, no photorealism, no 3D render, no text, no watermark.\nThe character must be fully opaque. Avoid transparent clothing, transparent hair, motion blur, glow, cast shadows, and background objects.\n\nCharacter description:\nfull-body animated man with light blond curly hair, many loose curls around the head, dark navy long coat, black trousers, thin silhouette.\n\n[BACKGROUND CONTRACT - black background with light separation contour]\n1. Background: pure black (#000000), flat and edge-to-edge, no shading, gradient, texture, or scenery.\n2. Character edge: add a thin 1-2 px clean light / pure white separation outline around the outer silhouette so the character is clearly separated from the black plate.\n3. Do NOT recolor black or white clothing; black clothing, white clothing, hair, eyes, accessories, and props must remain visually faithful to the character description.\n4. No cast shadow on the black background; no glow halo beyond the thin outline; no background objects.",
+  "matting": "MODNet_raw_alpha_generic_cleanup_no_chroma_key"
+}

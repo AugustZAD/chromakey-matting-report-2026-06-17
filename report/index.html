@@ -1,10 +1,6 @@
 <!doctype html>
-<html lang="zh-CN">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MODNet 卡通绿幕抠图方案对比</title>
-<style>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MODNet 卡通背景/轮廓抠图方案对比</title><style>
 :root { color-scheme: light; --bg:#f5f3ee; --panel:#fffdf8; --ink:#1f2328; --muted:#6b6f76; --line:#d8d2c8; --accent:#175c8a; }
 * { box-sizing: border-box; }
 body { margin:0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background:var(--bg); color:var(--ink); }
@@ -21,7 +17,7 @@ main { padding:20px 24px 48px; }
 .readme h2, .summary h2 { margin:0 0 10px; font-size:20px; }
 .readme ul { margin:8px 0 0; padding-left:20px; line-height:1.7; }
 .summary { padding:18px 20px; overflow:auto; }
-table { border-collapse:collapse; width:100%; min-width:860px; }
+table { border-collapse:collapse; width:100%; min-width:980px; }
 th, td { border-bottom:1px solid var(--line); padding:9px 10px; text-align:right; white-space:nowrap; }
 th:first-child, td:first-child { text-align:left; }
 th span { display:block; }
@@ -43,47 +39,30 @@ a:hover { text-decoration:underline; }
 .pane { margin:0; min-height:760px; height:min(86vh, 1180px); display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; border-top:1px solid rgba(0,0,0,.1); }
 .pane img { max-height:calc(100% - 34px); max-width:98%; object-fit:contain; display:block; }
 .pane figcaption { position:absolute; left:8px; bottom:7px; font-size:12px; padding:3px 6px; border-radius:4px; background:rgba(255,255,255,.78); color:#222; }
-.bg-gray { background:#808080; }
-.bg-dark { background:#0f0f16; }
-.bg-dark figcaption { background:rgba(0,0,0,.62); color:#fff; }
-.bg-magenta { background:#c0186b; }
 .hidden { display:none !important; }
-.focus-white .scheme:not(.scheme-white_outline_green), .focus-dark .scheme:not(.scheme-dark_contour_green), .focus-blue .scheme:not(.scheme-blue_screen), .focus-current .scheme:not(.scheme-current_green) { display:none; }
-.focus-white .schemes, .focus-dark .schemes, .focus-blue .schemes, .focus-current .schemes { grid-template-columns:1fr; }
+.focus-white .scheme:not(.scheme-white_outline_green), .focus-dark .scheme:not(.scheme-dark_contour_green), .focus-blue .scheme:not(.scheme-blue_screen), .focus-current .scheme:not(.scheme-current_green), .focus-whitebg .scheme:not(.scheme-white_bg_dark_contour), .focus-blackbg .scheme:not(.scheme-black_bg_light_contour) { display:none; }
+.focus-white .schemes, .focus-dark .schemes, .focus-blue .schemes, .focus-current .schemes, .focus-whitebg .schemes, .focus-blackbg .schemes { grid-template-columns:1fr; }
 .preview-dark .pane { background:#0f0f16; }
 .preview-dark .pane figcaption { background:rgba(0,0,0,.62); color:#fff; }
 .preview-magenta .pane { background:#c0186b; }
 .preview-gray .pane { background:#808080; }
+.preview-white .pane { background:#fff; }
 @media (max-width: 1000px) { .schemes { grid-template-columns:1fr; } .pane { height:min(86vh, 980px); } }
 @media (max-width: 700px) { main { padding:12px; } header.hero { padding:14px 12px; } .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); } .pane { min-height:620px; height:82vh; } }
-</style>
-</head>
-<body>
-<header class="hero">
-  <h1>MODNet 卡通绿幕抠图方案对比</h1>
-  <p>读法：每个样本下面有 4 个方案；每个方案现在只显示一张大图。用“预览背景”切换灰底、黑底、品红底：灰底看整体轮廓，黑底看白边/光晕，品红底看残色/缺口。</p>
-  <div class="controls">
-    <label>样本 <select id="sampleSelect"><option value="">全部</option><option value="wispy_black_hair_white_blouse">wispy_black_hair_white_blouse</option><option value="blonde_curls_dark_coat">blonde_curls_dark_coat</option><option value="silver_hair_translucent_sleeves">silver_hair_translucent_sleeves</option><option value="blue_jacket_prop_edges">blue_jacket_prop_edges</option><option value="red_gown_long_hair">red_gown_long_hair</option><option value="spiky_hair_black_outfit">spiky_hair_black_outfit</option><option value="pastel_twin_tails_thin_ribbons">pastel_twin_tails_thin_ribbons</option><option value="white_suit_dark_outline">white_suit_dark_outline</option></select></label>
-    <label>方案 <select id="schemeSelect"><option value="">全部</option><option value="current">当前绿幕</option><option value="white">白边</option><option value="dark">深色轮廓</option><option value="blue">蓝幕</option></select></label>
-    <label>预览背景 <select id="bgSelect"><option value="gray">灰底：整体轮廓</option><option value="dark">黑底：白边 / halo</option><option value="magenta">品红底：残色 / 缺口</option></select></label>
-    <button id="resetBtn">重置</button>
-  </div>
-</header>
-<main>
-  <section class="readme">
-    <h2>先看什么</h2>
-    <ul>
-      <li>想判断白边方案：把“预览背景”切到 <b>黑底</b>，看 White Outline 的白色贴纸边是否明显。</li>
-      <li>想判断自然度：看 <b>Dark Contour</b> 在黑底或品红底下像不像正常卡通线稿。</li>
-      <li>想判断蓝幕潜力：切到 <b>品红底</b>，看 Blue Screen 是否有蓝边、缺口、或蓝色衣服被改色。</li>
-      <li>指标里 `halo_dark`、`holes_pct`、`white_rim_pct` 越低通常越好；`largest_cc_ratio` 越接近 1 越好。</li>
-    </ul>
-  </section>
-  <section class="summary">
-    <h2>汇总指标（均值）</h2>
-    <table><thead><tr><th>方案</th><th>黑底光晕</th><th>破洞%</th><th>绿边</th><th>蓝边</th><th>白边%</th><th>连通度</th></tr></thead><tbody><tr><th><span>当前绿幕</span><small>Current Green</small></th><td>18.85</td><td>5.78</td><td>0.91</td><td>1.16</td><td>3.41</td><td>0.99</td></tr><tr><th><span>白边绿幕</span><small>White Outline</small></th><td>55.56</td><td>3.31</td><td>0.37</td><td>0.06</td><td>52.05</td><td>0.98</td></tr><tr><th><span>深色轮廓</span><small>Dark Contour</small></th><td>12.94</td><td>5.67</td><td>1.42</td><td>0.49</td><td>0.89</td><td>0.99</td></tr><tr><th><span>蓝幕</span><small>Blue Screen</small></th><td>14.27</td><td>2.06</td><td>0.02</td><td>17.25</td><td>0.50</td><td>0.98</td></tr></tbody></table>
-  </section>
-  
+</style></head>
+<body><header class="hero"><h1>MODNet 卡通背景/轮廓抠图方案对比</h1>
+<p>读法：每个样本下面有 6 个方案；每个方案只显示一张大图。用“预览背景”切换灰底、黑底、品红底或白底：灰底看整体轮廓，黑底看白边/光晕，品红底看残色/缺口，白底看黑边自然度。</p>
+<div class="controls"><label>样本 <select id="sampleSelect"><option value="">全部</option><option value="wispy_black_hair_white_blouse">wispy_black_hair_white_blouse</option><option value="blonde_curls_dark_coat">blonde_curls_dark_coat</option><option value="silver_hair_translucent_sleeves">silver_hair_translucent_sleeves</option><option value="blue_jacket_prop_edges">blue_jacket_prop_edges</option><option value="red_gown_long_hair">red_gown_long_hair</option><option value="spiky_hair_black_outfit">spiky_hair_black_outfit</option><option value="pastel_twin_tails_thin_ribbons">pastel_twin_tails_thin_ribbons</option><option value="white_suit_dark_outline">white_suit_dark_outline</option></select></label>
+<label>方案 <select id="schemeSelect"><option value="">全部</option><option value="current">当前绿幕</option><option value="white">白边绿幕</option><option value="dark">深色轮廓</option><option value="blue">蓝幕</option><option value="whitebg">白底黑边</option><option value="blackbg">黑底白边</option></select></label>
+<label>预览背景 <select id="bgSelect"><option value="gray">灰底：整体轮廓</option><option value="dark">黑底：白边 / halo</option><option value="magenta">品红底：残色 / 缺口</option><option value="white">白底：黑边自然度</option></select></label>
+<button id="resetBtn">重置</button></div></header>
+<main><section class="readme"><h2>先看什么</h2><ul>
+<li>想判断“黑边白底”：选择 <b>白底黑边</b>，再切换黑/白/品红背景看边缘和破洞。</li>
+<li>想判断“白边黑底”：选择 <b>黑底白边</b>，重点看黑底下白边是否变成贴纸感。</li>
+<li>指标里 `halo_dark`、`holes_pct`、`white_rim_pct` 越低通常越好；`largest_cc_ratio` 越接近 1 越好。</li>
+</ul></section>
+<section class="summary"><h2>汇总指标（均值）</h2><table><thead><tr><th>方案</th><th>黑底光晕</th><th>破洞%</th><th>绿边</th><th>蓝边</th><th>白边%</th><th>连通度</th></tr></thead><tbody><tr><th><span>当前绿幕</span><small>Current Green</small></th><td>18.85</td><td>5.78</td><td>0.91</td><td>1.16</td><td>3.41</td><td>0.99</td></tr><tr><th><span>白边绿幕</span><small>White Outline</small></th><td>55.56</td><td>3.31</td><td>0.37</td><td>0.06</td><td>52.05</td><td>0.98</td></tr><tr><th><span>深色轮廓</span><small>Dark Contour</small></th><td>12.94</td><td>5.67</td><td>1.42</td><td>0.49</td><td>0.89</td><td>0.99</td></tr><tr><th><span>蓝幕</span><small>Blue Screen</small></th><td>14.27</td><td>2.06</td><td>0.02</td><td>17.25</td><td>0.50</td><td>0.98</td></tr><tr><th><span>白底黑边</span><small>White BG + Dark Contour</small></th><td>49.99</td><td>1.56</td><td>0.15</td><td>0.47</td><td>44.75</td><td>0.97</td></tr><tr><th><span>黑底白边</span><small>Black BG + Light Contour</small></th><td>31.09</td><td>1.13</td><td>0.12</td><td>0.18</td><td>12.19</td><td>1.00</td></tr></tbody></table></section>
+
       <article class="sample-card" data-sample="wispy_black_hair_white_blouse">
         <header><h2>wispy_black_hair_white_blouse</h2><a href="../montages/wispy_black_hair_white_blouse.jpg" target="_blank">原 montage</a></header>
         <div class="schemes">
@@ -95,7 +74,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>16.66</span><span class="metric"><b>破洞%</b>3.62</span><span class="metric"><b>绿边</b>1.18</span><span class="metric"><b>蓝边</b>0.35</span><span class="metric"><b>白边%</b>0.42</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/current_green/wispy_black_hair_white_blouse.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-white_outline_green" data-scheme="white_outline_green">
             <div class="scheme-head">
               <div><h3>白边绿幕</h3><p>旧方案：人物外轮廓 1-2px 纯白描边，重点看黑底白边。</p></div>
@@ -104,7 +82,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>59.61</span><span class="metric"><b>破洞%</b>0.77</span><span class="metric"><b>绿边</b>0.36</span><span class="metric"><b>蓝边</b>0.02</span><span class="metric"><b>白边%</b>46.22</span><span class="metric"><b>连通度</b>0.94</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/white_outline_green/wispy_black_hair_white_blouse.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-dark_contour_green" data-scheme="dark_contour_green">
             <div class="scheme-head">
               <div><h3>深色轮廓</h3><p>推荐候选：把边界增强改成风格内深色线稿。</p></div>
@@ -113,7 +90,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>11.46</span><span class="metric"><b>破洞%</b>0.68</span><span class="metric"><b>绿边</b>1.43</span><span class="metric"><b>蓝边</b>0.03</span><span class="metric"><b>白边%</b>0.02</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/dark_contour_green/wispy_black_hair_white_blouse.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-blue_screen" data-scheme="blue_screen">
             <div class="scheme-head">
               <div><h3>蓝幕</h3><p>潜力方案：蓝幕 + blue-key 后处理，重点看蓝 spill 和缺口。</p></div>
@@ -122,9 +98,23 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>13.18</span><span class="metric"><b>破洞%</b>1.67</span><span class="metric"><b>绿边</b>0.02</span><span class="metric"><b>蓝边</b>7.78</span><span class="metric"><b>白边%</b>0.72</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/blue_screen/wispy_black_hair_white_blouse.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        </div>
+          <section class="scheme scheme-white_bg_dark_contour" data-scheme="white_bg_dark_contour">
+            <div class="scheme-head">
+              <div><h3>白底黑边</h3><p>新增：白底 + 自然深色外轮廓，纯 MODNet 通用后处理。</p></div>
+              <a href="../raw/white_bg_dark_contour/wispy_black_hair_white_blouse.png" target="_blank">raw</a>
+            </div>
+            <div class="metrics"><span class="metric"><b>黑底光晕</b>43.43</span><span class="metric"><b>破洞%</b>2.66</span><span class="metric"><b>绿边</b>0.18</span><span class="metric"><b>蓝边</b>0.90</span><span class="metric"><b>白边%</b>40.82</span><span class="metric"><b>连通度</b>1.00</span></div>
+            <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/white_bg_dark_contour/wispy_black_hair_white_blouse.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
+          </section>
+          <section class="scheme scheme-black_bg_light_contour" data-scheme="black_bg_light_contour">
+            <div class="scheme-head">
+              <div><h3>黑底白边</h3><p>新增：黑底 + 浅/白色分离线，纯 MODNet 通用后处理。</p></div>
+              <a href="../raw/black_bg_light_contour/wispy_black_hair_white_blouse.png" target="_blank">raw</a>
+            </div>
+            <div class="metrics"><span class="metric"><b>黑底光晕</b>31.55</span><span class="metric"><b>破洞%</b>2.29</span><span class="metric"><b>绿边</b>0.13</span><span class="metric"><b>蓝边</b>0.22</span><span class="metric"><b>白边%</b>4.52</span><span class="metric"><b>连通度</b>1.00</span></div>
+            <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/black_bg_light_contour/wispy_black_hair_white_blouse.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
+          </section></div>
       </article>
-    
       <article class="sample-card" data-sample="blonde_curls_dark_coat">
         <header><h2>blonde_curls_dark_coat</h2><a href="../montages/blonde_curls_dark_coat.jpg" target="_blank">原 montage</a></header>
         <div class="schemes">
@@ -136,7 +126,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>9.33</span><span class="metric"><b>破洞%</b>0.82</span><span class="metric"><b>绿边</b>1.00</span><span class="metric"><b>蓝边</b>1.50</span><span class="metric"><b>白边%</b>0.02</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/current_green/blonde_curls_dark_coat.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-white_outline_green" data-scheme="white_outline_green">
             <div class="scheme-head">
               <div><h3>白边绿幕</h3><p>旧方案：人物外轮廓 1-2px 纯白描边，重点看黑底白边。</p></div>
@@ -145,7 +134,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>52.45</span><span class="metric"><b>破洞%</b>0.61</span><span class="metric"><b>绿边</b>0.38</span><span class="metric"><b>蓝边</b>0.05</span><span class="metric"><b>白边%</b>52.00</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/white_outline_green/blonde_curls_dark_coat.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-dark_contour_green" data-scheme="dark_contour_green">
             <div class="scheme-head">
               <div><h3>深色轮廓</h3><p>推荐候选：把边界增强改成风格内深色线稿。</p></div>
@@ -154,7 +142,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>13.91</span><span class="metric"><b>破洞%</b>1.49</span><span class="metric"><b>绿边</b>1.22</span><span class="metric"><b>蓝边</b>0.64</span><span class="metric"><b>白边%</b>0.00</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/dark_contour_green/blonde_curls_dark_coat.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-blue_screen" data-scheme="blue_screen">
             <div class="scheme-head">
               <div><h3>蓝幕</h3><p>潜力方案：蓝幕 + blue-key 后处理，重点看蓝 spill 和缺口。</p></div>
@@ -163,9 +150,23 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>7.66</span><span class="metric"><b>破洞%</b>0.00</span><span class="metric"><b>绿边</b>0.02</span><span class="metric"><b>蓝边</b>0.11</span><span class="metric"><b>白边%</b>0.00</span><span class="metric"><b>连通度</b>0.93</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/blue_screen/blonde_curls_dark_coat.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        </div>
+          <section class="scheme scheme-white_bg_dark_contour" data-scheme="white_bg_dark_contour">
+            <div class="scheme-head">
+              <div><h3>白底黑边</h3><p>新增：白底 + 自然深色外轮廓，纯 MODNet 通用后处理。</p></div>
+              <a href="../raw/white_bg_dark_contour/blonde_curls_dark_coat.png" target="_blank">raw</a>
+            </div>
+            <div class="metrics"><span class="metric"><b>黑底光晕</b>36.42</span><span class="metric"><b>破洞%</b>0.76</span><span class="metric"><b>绿边</b>0.16</span><span class="metric"><b>蓝边</b>0.35</span><span class="metric"><b>白边%</b>37.00</span><span class="metric"><b>连通度</b>1.00</span></div>
+            <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/white_bg_dark_contour/blonde_curls_dark_coat.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
+          </section>
+          <section class="scheme scheme-black_bg_light_contour" data-scheme="black_bg_light_contour">
+            <div class="scheme-head">
+              <div><h3>黑底白边</h3><p>新增：黑底 + 浅/白色分离线，纯 MODNet 通用后处理。</p></div>
+              <a href="../raw/black_bg_light_contour/blonde_curls_dark_coat.png" target="_blank">raw</a>
+            </div>
+            <div class="metrics"><span class="metric"><b>黑底光晕</b>25.17</span><span class="metric"><b>破洞%</b>0.36</span><span class="metric"><b>绿边</b>0.13</span><span class="metric"><b>蓝边</b>0.18</span><span class="metric"><b>白边%</b>7.22</span><span class="metric"><b>连通度</b>1.00</span></div>
+            <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/black_bg_light_contour/blonde_curls_dark_coat.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
+          </section></div>
       </article>
-    
       <article class="sample-card" data-sample="silver_hair_translucent_sleeves">
         <header><h2>silver_hair_translucent_sleeves</h2><a href="../montages/silver_hair_translucent_sleeves.jpg" target="_blank">原 montage</a></header>
         <div class="schemes">
@@ -177,7 +178,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>33.75</span><span class="metric"><b>破洞%</b>0.29</span><span class="metric"><b>绿边</b>0.43</span><span class="metric"><b>蓝边</b>4.57</span><span class="metric"><b>白边%</b>3.01</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/current_green/silver_hair_translucent_sleeves.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-white_outline_green" data-scheme="white_outline_green">
             <div class="scheme-head">
               <div><h3>白边绿幕</h3><p>旧方案：人物外轮廓 1-2px 纯白描边，重点看黑底白边。</p></div>
@@ -186,7 +186,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>54.40</span><span class="metric"><b>破洞%</b>0.21</span><span class="metric"><b>绿边</b>0.40</span><span class="metric"><b>蓝边</b>0.04</span><span class="metric"><b>白边%</b>50.78</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/white_outline_green/silver_hair_translucent_sleeves.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-dark_contour_green" data-scheme="dark_contour_green">
             <div class="scheme-head">
               <div><h3>深色轮廓</h3><p>推荐候选：把边界增强改成风格内深色线稿。</p></div>
@@ -195,7 +194,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>20.79</span><span class="metric"><b>破洞%</b>2.45</span><span class="metric"><b>绿边</b>1.26</span><span class="metric"><b>蓝边</b>2.50</span><span class="metric"><b>白边%</b>0.17</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/dark_contour_green/silver_hair_translucent_sleeves.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-blue_screen" data-scheme="blue_screen">
             <div class="scheme-head">
               <div><h3>蓝幕</h3><p>潜力方案：蓝幕 + blue-key 后处理，重点看蓝 spill 和缺口。</p></div>
@@ -204,9 +202,23 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>34.84</span><span class="metric"><b>破洞%</b>2.21</span><span class="metric"><b>绿边</b>0.01</span><span class="metric"><b>蓝边</b>0.93</span><span class="metric"><b>白边%</b>0.52</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/blue_screen/silver_hair_translucent_sleeves.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        </div>
+          <section class="scheme scheme-white_bg_dark_contour" data-scheme="white_bg_dark_contour">
+            <div class="scheme-head">
+              <div><h3>白底黑边</h3><p>新增：白底 + 自然深色外轮廓，纯 MODNet 通用后处理。</p></div>
+              <a href="../raw/white_bg_dark_contour/silver_hair_translucent_sleeves.png" target="_blank">raw</a>
+            </div>
+            <div class="metrics"><span class="metric"><b>黑底光晕</b>39.30</span><span class="metric"><b>破洞%</b>0.20</span><span class="metric"><b>绿边</b>0.20</span><span class="metric"><b>蓝边</b>1.17</span><span class="metric"><b>白边%</b>34.59</span><span class="metric"><b>连通度</b>1.00</span></div>
+            <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/white_bg_dark_contour/silver_hair_translucent_sleeves.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
+          </section>
+          <section class="scheme scheme-black_bg_light_contour" data-scheme="black_bg_light_contour">
+            <div class="scheme-head">
+              <div><h3>黑底白边</h3><p>新增：黑底 + 浅/白色分离线，纯 MODNet 通用后处理。</p></div>
+              <a href="../raw/black_bg_light_contour/silver_hair_translucent_sleeves.png" target="_blank">raw</a>
+            </div>
+            <div class="metrics"><span class="metric"><b>黑底光晕</b>32.45</span><span class="metric"><b>破洞%</b>0.55</span><span class="metric"><b>绿边</b>0.15</span><span class="metric"><b>蓝边</b>0.12</span><span class="metric"><b>白边%</b>13.00</span><span class="metric"><b>连通度</b>1.00</span></div>
+            <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/black_bg_light_contour/silver_hair_translucent_sleeves.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
+          </section></div>
       </article>
-    
       <article class="sample-card" data-sample="blue_jacket_prop_edges">
         <header><h2>blue_jacket_prop_edges</h2><a href="../montages/blue_jacket_prop_edges.jpg" target="_blank">原 montage</a></header>
         <div class="schemes">
@@ -218,7 +230,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>5.76</span><span class="metric"><b>破洞%</b>16.59</span><span class="metric"><b>绿边</b>2.09</span><span class="metric"><b>蓝边</b>2.01</span><span class="metric"><b>白边%</b>0.18</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/current_green/blue_jacket_prop_edges.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-white_outline_green" data-scheme="white_outline_green">
             <div class="scheme-head">
               <div><h3>白边绿幕</h3><p>旧方案：人物外轮廓 1-2px 纯白描边，重点看黑底白边。</p></div>
@@ -227,7 +238,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>44.01</span><span class="metric"><b>破洞%</b>17.23</span><span class="metric"><b>绿边</b>0.34</span><span class="metric"><b>蓝边</b>0.20</span><span class="metric"><b>白边%</b>43.24</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/white_outline_green/blue_jacket_prop_edges.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-dark_contour_green" data-scheme="dark_contour_green">
             <div class="scheme-head">
               <div><h3>深色轮廓</h3><p>推荐候选：把边界增强改成风格内深色线稿。</p></div>
@@ -236,7 +246,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>2.31</span><span class="metric"><b>破洞%</b>20.88</span><span class="metric"><b>绿边</b>2.27</span><span class="metric"><b>蓝边</b>0.49</span><span class="metric"><b>白边%</b>0.00</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/dark_contour_green/blue_jacket_prop_edges.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-blue_screen" data-scheme="blue_screen">
             <div class="scheme-head">
               <div><h3>蓝幕</h3><p>潜力方案：蓝幕 + blue-key 后处理，重点看蓝 spill 和缺口。</p></div>
@@ -245,9 +254,23 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>5.36</span><span class="metric"><b>破洞%</b>0.16</span><span class="metric"><b>绿边</b>0.04</span><span class="metric"><b>蓝边</b>1.04</span><span class="metric"><b>白边%</b>0.29</span><span class="metric"><b>连通度</b>0.91</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/blue_screen/blue_jacket_prop_edges.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        </div>
+          <section class="scheme scheme-white_bg_dark_contour" data-scheme="white_bg_dark_contour">
+            <div class="scheme-head">
+              <div><h3>白底黑边</h3><p>新增：白底 + 自然深色外轮廓，纯 MODNet 通用后处理。</p></div>
+              <a href="../raw/white_bg_dark_contour/blue_jacket_prop_edges.png" target="_blank">raw</a>
+            </div>
+            <div class="metrics"><span class="metric"><b>黑底光晕</b>35.65</span><span class="metric"><b>破洞%</b>0.67</span><span class="metric"><b>绿边</b>0.20</span><span class="metric"><b>蓝边</b>0.41</span><span class="metric"><b>白边%</b>34.11</span><span class="metric"><b>连通度</b>1.00</span></div>
+            <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/white_bg_dark_contour/blue_jacket_prop_edges.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
+          </section>
+          <section class="scheme scheme-black_bg_light_contour" data-scheme="black_bg_light_contour">
+            <div class="scheme-head">
+              <div><h3>黑底白边</h3><p>新增：黑底 + 浅/白色分离线，纯 MODNet 通用后处理。</p></div>
+              <a href="../raw/black_bg_light_contour/blue_jacket_prop_edges.png" target="_blank">raw</a>
+            </div>
+            <div class="metrics"><span class="metric"><b>黑底光晕</b>28.52</span><span class="metric"><b>破洞%</b>3.70</span><span class="metric"><b>绿边</b>0.11</span><span class="metric"><b>蓝边</b>0.27</span><span class="metric"><b>白边%</b>8.57</span><span class="metric"><b>连通度</b>1.00</span></div>
+            <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/black_bg_light_contour/blue_jacket_prop_edges.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
+          </section></div>
       </article>
-    
       <article class="sample-card" data-sample="red_gown_long_hair">
         <header><h2>red_gown_long_hair</h2><a href="../montages/red_gown_long_hair.jpg" target="_blank">原 montage</a></header>
         <div class="schemes">
@@ -259,7 +282,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>9.58</span><span class="metric"><b>破洞%</b>8.77</span><span class="metric"><b>绿边</b>0.54</span><span class="metric"><b>蓝边</b>0.00</span><span class="metric"><b>白边%</b>0.00</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/current_green/red_gown_long_hair.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-white_outline_green" data-scheme="white_outline_green">
             <div class="scheme-head">
               <div><h3>白边绿幕</h3><p>旧方案：人物外轮廓 1-2px 纯白描边，重点看黑底白边。</p></div>
@@ -268,7 +290,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>57.59</span><span class="metric"><b>破洞%</b>2.46</span><span class="metric"><b>绿边</b>0.25</span><span class="metric"><b>蓝边</b>0.04</span><span class="metric"><b>白边%</b>48.12</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/white_outline_green/red_gown_long_hair.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-dark_contour_green" data-scheme="dark_contour_green">
             <div class="scheme-head">
               <div><h3>深色轮廓</h3><p>推荐候选：把边界增强改成风格内深色线稿。</p></div>
@@ -277,7 +298,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>9.59</span><span class="metric"><b>破洞%</b>9.79</span><span class="metric"><b>绿边</b>0.69</span><span class="metric"><b>蓝边</b>0.00</span><span class="metric"><b>白边%</b>0.00</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/dark_contour_green/red_gown_long_hair.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-blue_screen" data-scheme="blue_screen">
             <div class="scheme-head">
               <div><h3>蓝幕</h3><p>潜力方案：蓝幕 + blue-key 后处理，重点看蓝 spill 和缺口。</p></div>
@@ -286,9 +306,23 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>17.36</span><span class="metric"><b>破洞%</b>2.03</span><span class="metric"><b>绿边</b>0.00</span><span class="metric"><b>蓝边</b>4.19</span><span class="metric"><b>白边%</b>0.00</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/blue_screen/red_gown_long_hair.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        </div>
+          <section class="scheme scheme-white_bg_dark_contour" data-scheme="white_bg_dark_contour">
+            <div class="scheme-head">
+              <div><h3>白底黑边</h3><p>新增：白底 + 自然深色外轮廓，纯 MODNet 通用后处理。</p></div>
+              <a href="../raw/white_bg_dark_contour/red_gown_long_hair.png" target="_blank">raw</a>
+            </div>
+            <div class="metrics"><span class="metric"><b>黑底光晕</b>31.14</span><span class="metric"><b>破洞%</b>2.84</span><span class="metric"><b>绿边</b>0.20</span><span class="metric"><b>蓝边</b>0.18</span><span class="metric"><b>白边%</b>29.36</span><span class="metric"><b>连通度</b>1.00</span></div>
+            <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/white_bg_dark_contour/red_gown_long_hair.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
+          </section>
+          <section class="scheme scheme-black_bg_light_contour" data-scheme="black_bg_light_contour">
+            <div class="scheme-head">
+              <div><h3>黑底白边</h3><p>新增：黑底 + 浅/白色分离线，纯 MODNet 通用后处理。</p></div>
+              <a href="../raw/black_bg_light_contour/red_gown_long_hair.png" target="_blank">raw</a>
+            </div>
+            <div class="metrics"><span class="metric"><b>黑底光晕</b>39.02</span><span class="metric"><b>破洞%</b>0.61</span><span class="metric"><b>绿边</b>0.13</span><span class="metric"><b>蓝边</b>0.13</span><span class="metric"><b>白边%</b>14.92</span><span class="metric"><b>连通度</b>1.00</span></div>
+            <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/black_bg_light_contour/red_gown_long_hair.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
+          </section></div>
       </article>
-    
       <article class="sample-card" data-sample="spiky_hair_black_outfit">
         <header><h2>spiky_hair_black_outfit</h2><a href="../montages/spiky_hair_black_outfit.jpg" target="_blank">原 montage</a></header>
         <div class="schemes">
@@ -300,7 +334,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>2.33</span><span class="metric"><b>破洞%</b>0.44</span><span class="metric"><b>绿边</b>1.18</span><span class="metric"><b>蓝边</b>0.41</span><span class="metric"><b>白边%</b>0.00</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/current_green/spiky_hair_black_outfit.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-white_outline_green" data-scheme="white_outline_green">
             <div class="scheme-head">
               <div><h3>白边绿幕</h3><p>旧方案：人物外轮廓 1-2px 纯白描边，重点看黑底白边。</p></div>
@@ -309,7 +342,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>55.35</span><span class="metric"><b>破洞%</b>0.17</span><span class="metric"><b>绿边</b>0.34</span><span class="metric"><b>蓝边</b>0.06</span><span class="metric"><b>白边%</b>53.86</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/white_outline_green/spiky_hair_black_outfit.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-dark_contour_green" data-scheme="dark_contour_green">
             <div class="scheme-head">
               <div><h3>深色轮廓</h3><p>推荐候选：把边界增强改成风格内深色线稿。</p></div>
@@ -318,7 +350,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>2.44</span><span class="metric"><b>破洞%</b>0.35</span><span class="metric"><b>绿边</b>1.31</span><span class="metric"><b>蓝边</b>0.14</span><span class="metric"><b>白边%</b>0.00</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/dark_contour_green/spiky_hair_black_outfit.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-blue_screen" data-scheme="blue_screen">
             <div class="scheme-head">
               <div><h3>蓝幕</h3><p>潜力方案：蓝幕 + blue-key 后处理，重点看蓝 spill 和缺口。</p></div>
@@ -327,9 +358,23 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>3.94</span><span class="metric"><b>破洞%</b>0.12</span><span class="metric"><b>绿边</b>0.06</span><span class="metric"><b>蓝边</b>7.20</span><span class="metric"><b>白边%</b>0.00</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/blue_screen/spiky_hair_black_outfit.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        </div>
+          <section class="scheme scheme-white_bg_dark_contour" data-scheme="white_bg_dark_contour">
+            <div class="scheme-head">
+              <div><h3>白底黑边</h3><p>新增：白底 + 自然深色外轮廓，纯 MODNet 通用后处理。</p></div>
+              <a href="../raw/white_bg_dark_contour/spiky_hair_black_outfit.png" target="_blank">raw</a>
+            </div>
+            <div class="metrics"><span class="metric"><b>黑底光晕</b>42.38</span><span class="metric"><b>破洞%</b>0.08</span><span class="metric"><b>绿边</b>0.14</span><span class="metric"><b>蓝边</b>0.24</span><span class="metric"><b>白边%</b>37.09</span><span class="metric"><b>连通度</b>1.00</span></div>
+            <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/white_bg_dark_contour/spiky_hair_black_outfit.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
+          </section>
+          <section class="scheme scheme-black_bg_light_contour" data-scheme="black_bg_light_contour">
+            <div class="scheme-head">
+              <div><h3>黑底白边</h3><p>新增：黑底 + 浅/白色分离线，纯 MODNet 通用后处理。</p></div>
+              <a href="../raw/black_bg_light_contour/spiky_hair_black_outfit.png" target="_blank">raw</a>
+            </div>
+            <div class="metrics"><span class="metric"><b>黑底光晕</b>20.95</span><span class="metric"><b>破洞%</b>0.34</span><span class="metric"><b>绿边</b>0.09</span><span class="metric"><b>蓝边</b>0.20</span><span class="metric"><b>白边%</b>3.83</span><span class="metric"><b>连通度</b>1.00</span></div>
+            <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/black_bg_light_contour/spiky_hair_black_outfit.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
+          </section></div>
       </article>
-    
       <article class="sample-card" data-sample="pastel_twin_tails_thin_ribbons">
         <header><h2>pastel_twin_tails_thin_ribbons</h2><a href="../montages/pastel_twin_tails_thin_ribbons.jpg" target="_blank">原 montage</a></header>
         <div class="schemes">
@@ -341,7 +386,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>38.95</span><span class="metric"><b>破洞%</b>14.33</span><span class="metric"><b>绿边</b>0.23</span><span class="metric"><b>蓝边</b>0.00</span><span class="metric"><b>白边%</b>0.41</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/current_green/pastel_twin_tails_thin_ribbons.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-white_outline_green" data-scheme="white_outline_green">
             <div class="scheme-head">
               <div><h3>白边绿幕</h3><p>旧方案：人物外轮廓 1-2px 纯白描边，重点看黑底白边。</p></div>
@@ -350,7 +394,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>58.66</span><span class="metric"><b>破洞%</b>5.03</span><span class="metric"><b>绿边</b>0.58</span><span class="metric"><b>蓝边</b>0.01</span><span class="metric"><b>白边%</b>65.82</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/white_outline_green/pastel_twin_tails_thin_ribbons.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-dark_contour_green" data-scheme="dark_contour_green">
             <div class="scheme-head">
               <div><h3>深色轮廓</h3><p>推荐候选：把边界增强改成风格内深色线稿。</p></div>
@@ -359,7 +402,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>28.42</span><span class="metric"><b>破洞%</b>8.76</span><span class="metric"><b>绿边</b>0.65</span><span class="metric"><b>蓝边</b>0.00</span><span class="metric"><b>白边%</b>0.27</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/dark_contour_green/pastel_twin_tails_thin_ribbons.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-blue_screen" data-scheme="blue_screen">
             <div class="scheme-head">
               <div><h3>蓝幕</h3><p>潜力方案：蓝幕 + blue-key 后处理，重点看蓝 spill 和缺口。</p></div>
@@ -368,9 +410,23 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>13.34</span><span class="metric"><b>破洞%</b>9.28</span><span class="metric"><b>绿边</b>0.00</span><span class="metric"><b>蓝边</b>103.30</span><span class="metric"><b>白边%</b>0.01</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/blue_screen/pastel_twin_tails_thin_ribbons.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        </div>
+          <section class="scheme scheme-white_bg_dark_contour" data-scheme="white_bg_dark_contour">
+            <div class="scheme-head">
+              <div><h3>白底黑边</h3><p>新增：白底 + 自然深色外轮廓，纯 MODNet 通用后处理。</p></div>
+              <a href="../raw/white_bg_dark_contour/pastel_twin_tails_thin_ribbons.png" target="_blank">raw</a>
+            </div>
+            <div class="metrics"><span class="metric"><b>黑底光晕</b>80.38</span><span class="metric"><b>破洞%</b>2.13</span><span class="metric"><b>绿边</b>0.08</span><span class="metric"><b>蓝边</b>0.07</span><span class="metric"><b>白边%</b>75.18</span><span class="metric"><b>连通度</b>0.97</span></div>
+            <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/white_bg_dark_contour/pastel_twin_tails_thin_ribbons.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
+          </section>
+          <section class="scheme scheme-black_bg_light_contour" data-scheme="black_bg_light_contour">
+            <div class="scheme-head">
+              <div><h3>黑底白边</h3><p>新增：黑底 + 浅/白色分离线，纯 MODNet 通用后处理。</p></div>
+              <a href="../raw/black_bg_light_contour/pastel_twin_tails_thin_ribbons.png" target="_blank">raw</a>
+            </div>
+            <div class="metrics"><span class="metric"><b>黑底光晕</b>34.80</span><span class="metric"><b>破洞%</b>1.21</span><span class="metric"><b>绿边</b>0.16</span><span class="metric"><b>蓝边</b>0.16</span><span class="metric"><b>白边%</b>14.14</span><span class="metric"><b>连通度</b>1.00</span></div>
+            <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/black_bg_light_contour/pastel_twin_tails_thin_ribbons.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
+          </section></div>
       </article>
-    
       <article class="sample-card" data-sample="white_suit_dark_outline">
         <header><h2>white_suit_dark_outline</h2><a href="../montages/white_suit_dark_outline.jpg" target="_blank">原 montage</a></header>
         <div class="schemes">
@@ -382,7 +438,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>34.42</span><span class="metric"><b>破洞%</b>1.34</span><span class="metric"><b>绿边</b>0.60</span><span class="metric"><b>蓝边</b>0.42</span><span class="metric"><b>白边%</b>23.22</span><span class="metric"><b>连通度</b>0.96</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/current_green/white_suit_dark_outline.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-white_outline_green" data-scheme="white_outline_green">
             <div class="scheme-head">
               <div><h3>白边绿幕</h3><p>旧方案：人物外轮廓 1-2px 纯白描边，重点看黑底白边。</p></div>
@@ -391,7 +446,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>62.38</span><span class="metric"><b>破洞%</b>0.00</span><span class="metric"><b>绿边</b>0.32</span><span class="metric"><b>蓝边</b>0.03</span><span class="metric"><b>白边%</b>56.33</span><span class="metric"><b>连通度</b>0.93</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/white_outline_green/white_suit_dark_outline.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-dark_contour_green" data-scheme="dark_contour_green">
             <div class="scheme-head">
               <div><h3>深色轮廓</h3><p>推荐候选：把边界增强改成风格内深色线稿。</p></div>
@@ -400,7 +454,6 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>14.58</span><span class="metric"><b>破洞%</b>0.95</span><span class="metric"><b>绿边</b>2.57</span><span class="metric"><b>蓝边</b>0.15</span><span class="metric"><b>白边%</b>6.62</span><span class="metric"><b>连通度</b>0.96</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/dark_contour_green/white_suit_dark_outline.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        
           <section class="scheme scheme-blue_screen" data-scheme="blue_screen">
             <div class="scheme-head">
               <div><h3>蓝幕</h3><p>潜力方案：蓝幕 + blue-key 后处理，重点看蓝 spill 和缺口。</p></div>
@@ -409,11 +462,23 @@ a:hover { text-decoration:underline; }
             <div class="metrics"><span class="metric"><b>黑底光晕</b>18.49</span><span class="metric"><b>破洞%</b>1.02</span><span class="metric"><b>绿边</b>0.03</span><span class="metric"><b>蓝边</b>13.50</span><span class="metric"><b>白边%</b>2.45</span><span class="metric"><b>连通度</b>1.00</span></div>
             <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/blue_screen/white_suit_dark_outline.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
           </section>
-        </div>
-      </article>
-    
-</main>
-<script>
+          <section class="scheme scheme-white_bg_dark_contour" data-scheme="white_bg_dark_contour">
+            <div class="scheme-head">
+              <div><h3>白底黑边</h3><p>新增：白底 + 自然深色外轮廓，纯 MODNet 通用后处理。</p></div>
+              <a href="../raw/white_bg_dark_contour/white_suit_dark_outline.png" target="_blank">raw</a>
+            </div>
+            <div class="metrics"><span class="metric"><b>黑底光晕</b>91.24</span><span class="metric"><b>破洞%</b>3.17</span><span class="metric"><b>绿边</b>0.06</span><span class="metric"><b>蓝边</b>0.43</span><span class="metric"><b>白边%</b>69.85</span><span class="metric"><b>连通度</b>0.82</span></div>
+            <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/white_bg_dark_contour/white_suit_dark_outline.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
+          </section>
+          <section class="scheme scheme-black_bg_light_contour" data-scheme="black_bg_light_contour">
+            <div class="scheme-head">
+              <div><h3>黑底白边</h3><p>新增：黑底 + 浅/白色分离线，纯 MODNet 通用后处理。</p></div>
+              <a href="../raw/black_bg_light_contour/white_suit_dark_outline.png" target="_blank">raw</a>
+            </div>
+            <div class="metrics"><span class="metric"><b>黑底光晕</b>36.29</span><span class="metric"><b>破洞%</b>0.00</span><span class="metric"><b>绿边</b>0.08</span><span class="metric"><b>蓝边</b>0.17</span><span class="metric"><b>白边%</b>31.31</span><span class="metric"><b>连通度</b>1.00</span></div>
+            <div class="panes single-pane"><figure class="pane bg-gray active-pane" data-bg="gray"><img src="../rgba/black_bg_light_contour/white_suit_dark_outline.png" loading="lazy"><figcaption>大图预览：顶部可切换背景</figcaption></figure></div>
+          </section></div>
+      </article></main><script>
 const sampleSel = document.querySelector('#sampleSelect');
 const schemeSel = document.querySelector('#schemeSelect');
 const bgSel = document.querySelector('#bgSelect');
@@ -422,7 +487,7 @@ function applyFilters(){
   const sample = sampleSel.value;
   const scheme = schemeSel.value;
   const bg = bgSel.value || 'gray';
-  document.body.classList.remove('focus-current','focus-white','focus-dark','focus-blue','preview-gray','preview-dark','preview-magenta');
+  document.body.classList.remove('focus-current','focus-white','focus-dark','focus-blue','focus-whitebg','focus-blackbg','preview-gray','preview-dark','preview-magenta','preview-white');
   document.body.classList.add('preview-' + bg);
   if (scheme) document.body.classList.add('focus-' + scheme);
   cards.forEach(card => card.classList.toggle('hidden', sample && card.dataset.sample !== sample));
@@ -432,6 +497,4 @@ schemeSel.addEventListener('change', applyFilters);
 bgSel.addEventListener('change', applyFilters);
 document.querySelector('#resetBtn').addEventListener('click', () => { sampleSel.value=''; schemeSel.value=''; bgSel.value='gray'; applyFilters(); });
 applyFilters();
-</script>
-</body>
-</html>
+</script></body></html>
