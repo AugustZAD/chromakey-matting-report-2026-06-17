@@ -1,0 +1,9 @@
+{
+  "sample_id": "silver_hair_translucent_sleeves",
+  "scheme_id": "black_bg_no_outline",
+  "scheme_label": "Black BG + No Extra Outline",
+  "key": "model-only",
+  "raw_path": "/Users/august/chromakey-matting-exp-2026-06-17/raw/black_bg_no_outline/silver_hair_translucent_sleeves.png",
+  "prompt": "Stylized animated-series full-body character asset, 9:16 vertical composition, entire figure visible head to toe, centered with generous empty margin.\nClean cartoon/anime-inspired rendering, readable silhouette, designed facial features, simplified anatomy, clean linework, flat-to-cel shaded color, no photorealism, no 3D render, no text, no watermark.\nThe character must be fully opaque. Avoid transparent clothing, transparent hair, motion blur, glow, cast shadows, and background objects.\n\nCharacter description:\nfull-body animated woman with silver hair, side bangs, pale lavender dress with sheer-looking sleeves rendered as opaque fabric, delicate lace-like cuffs.\n\n[BACKGROUND CONTRACT - black background, no extra outline]\n1. Background: pure black (#000000), flat and edge-to-edge, no shading, gradient, texture, or scenery.\n2. Character edge: keep only the character's natural cartoon/anime lineart. Do NOT add a white sticker outline, glow, rim light, halo, cast shadow, or border.\n3. The character silhouette must remain readable against the black plate through normal lineart and internal color contrast.\n4. Do NOT recolor black or white clothing; black clothing, white clothing, hair, eyes, accessories, and props must remain faithful to the character description.",
+  "matting": "MODNet_raw_alpha_generic_cleanup_no_chroma_key"
+}

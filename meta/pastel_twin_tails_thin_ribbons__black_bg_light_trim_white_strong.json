@@ -1,0 +1,9 @@
+{
+  "sample_id": "pastel_twin_tails_thin_ribbons",
+  "scheme_id": "black_bg_light_trim_white_strong",
+  "scheme_label": "Black BG White Trim Strong",
+  "key": "postprocess",
+  "raw_path": "/Users/august/chromakey-matting-exp-2026-06-17/raw/black_bg_light_trim_white_strong/pastel_twin_tails_thin_ribbons.png",
+  "prompt": "Derived from black_bg_light_contour",
+  "matting": "Derived RGBA postprocess: white_trim"
+}

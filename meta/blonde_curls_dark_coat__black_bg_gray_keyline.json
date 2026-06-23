@@ -1,0 +1,9 @@
+{
+  "sample_id": "blonde_curls_dark_coat",
+  "scheme_id": "black_bg_gray_keyline",
+  "scheme_label": "Black BG + Gray Hairline",
+  "key": "model-only",
+  "raw_path": "/Users/august/chromakey-matting-exp-2026-06-17/raw/black_bg_gray_keyline/blonde_curls_dark_coat.png",
+  "prompt": "Stylized animated-series full-body character asset, 9:16 vertical composition, entire figure visible head to toe, centered with generous empty margin.\nClean cartoon/anime-inspired rendering, readable silhouette, designed facial features, simplified anatomy, clean linework, flat-to-cel shaded color, no photorealism, no 3D render, no text, no watermark.\nThe character must be fully opaque. Avoid transparent clothing, transparent hair, motion blur, glow, cast shadows, and background objects.\n\nCharacter description:\nfull-body animated man with light blond curly hair, many loose curls around the head, dark navy long coat, black trousers, thin silhouette.\n\n[BACKGROUND CONTRACT - black background with subtle gray keyline]\n1. Background: pure black (#000000), flat and edge-to-edge, no shading, gradient, texture, or scenery.\n2. Character edge: add only a very thin 1 px neutral gray separation keyline around the outer silhouette, around #8A8A8A to #B0B0B0. It must not be pure white, not a sticker border, not a glow, and not wider than 1 px.\n3. Do NOT recolor black or white clothing; black clothing, white clothing, hair, eyes, accessories, and props must remain faithful to the character description.\n4. No cast shadow, no halo beyond the thin gray keyline, no background objects.",
+  "matting": "MODNet_raw_alpha_generic_cleanup_no_chroma_key"
+}

@@ -1,0 +1,9 @@
+{
+  "sample_id": "silver_hair_translucent_sleeves",
+  "scheme_id": "black_bg_light_trim_white_gentle",
+  "scheme_label": "Black BG White Trim Gentle",
+  "key": "postprocess",
+  "raw_path": "/Users/august/chromakey-matting-exp-2026-06-17/raw/black_bg_light_trim_white_gentle/silver_hair_translucent_sleeves.png",
+  "prompt": "Derived from black_bg_light_contour",
+  "matting": "Derived RGBA postprocess: white_trim"
+}

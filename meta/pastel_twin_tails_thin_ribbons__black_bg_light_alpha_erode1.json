@@ -1,0 +1,9 @@
+{
+  "sample_id": "pastel_twin_tails_thin_ribbons",
+  "scheme_id": "black_bg_light_alpha_erode1",
+  "scheme_label": "Black BG Alpha Erode 1px",
+  "key": "postprocess",
+  "raw_path": "/Users/august/chromakey-matting-exp-2026-06-17/raw/black_bg_light_alpha_erode1/pastel_twin_tails_thin_ribbons.png",
+  "prompt": "Derived from black_bg_light_contour",
+  "matting": "Derived RGBA postprocess: alpha_erode"
+}

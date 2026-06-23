@@ -1,0 +1,9 @@
+{
+  "sample_id": "spiky_hair_black_outfit",
+  "scheme_id": "black_bg_light_alpha_erode1",
+  "scheme_label": "Black BG Alpha Erode 1px",
+  "key": "postprocess",
+  "raw_path": "/Users/august/chromakey-matting-exp-2026-06-17/raw/black_bg_light_alpha_erode1/spiky_hair_black_outfit.png",
+  "prompt": "Derived from black_bg_light_contour",
+  "matting": "Derived RGBA postprocess: alpha_erode"
+}
